@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Banner from "../components//Home/Banner.astro";
+import Features from "../components/Home/Features.astro";
+import DiscountFade from "../components/Home/DiscountFade.astro";
+---
+
+<Layout title="E-commerce">
+  <main class="pt-10">
+    <Banner
+      title={"Gelatican"}
+      full_description={"En Gelatican, hemos creado una deliciosa gelatina para perros hecha a partir de residuos orgánicos. Nuestro compromiso es doble: brindar una alimentación saludable y nutritiva para tu mascota mientras contribuimos a la sostenibilidad del medio ambiente."}
+      pageHeaderBgImg={"../images/dog-bg.jpg"}
+      pageHeaderMinVh="50vh"
+    />
+    <div class="my-5">
+      <Features
+        title="Product Features"
+        full_description="Society has put up so many boundaries, so many limitations on what’s right and wrong that it’s almost impossible"
+      />
+    </div>
+    <div class="my-5">
+      <DiscountFade pageHeaderBgImg={"../images/bg1.jpg"} />
+    </div>
+  </main>
+</Layout>

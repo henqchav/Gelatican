@@ -1,0 +1,122 @@
+---
+interface Props {
+  title: string;
+  full_description: string;
+  pageHeaderBgImg: string;
+  pageHeaderMinVh: string;
+}
+
+const { title, full_description, pageHeaderBgImg, pageHeaderMinVh } =
+  Astro.props as Props;
+---
+
+<section class="mb-8">
+  <div
+    class="page-header py-12 py-md-0 relative bg-cover"
+    style={`background-image: linear-gradient(rgba(0,  0,  0,  0.5), rgba(0,  0,  0,  0.5)), url(${pageHeaderBgImg}); min-height: ${pageHeaderMinVh}`}
+  >
+    <div class="max-w-7xl mx-auto z-10">
+      <div class="grid grid-cols-2">
+        <div>
+          <div class="bg-soft-yellow rounded-lg mx-10">
+            <div>
+              <h1
+                class="text-3xl font-bold text-blue1 dark:text-blue1 pt-5 px-5 pb-2"
+              >
+                Déjanos tus Datos y Mantente Informado
+              </h1>
+              <p class="text-gray-700 dark:text-gray-400 text-sm px-5">
+                Al brindar tus datos, recibirás información sobre Gelatican,
+                ofertas exclusivas y consejos para cuidar a tu mascota y el
+                planeta. ¡Gracias por unirte a nuestra comunidad!
+              </p>
+            </div>
+            <form class="max-w-md mx-auto pt-5">
+              <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                  <input
+                    type="text"
+                    name="floating_first_name"
+                    id="floating_first_name"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    required
+                  />
+                  <label
+                    for="floating_first_name"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    >Nombres</label
+                  >
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                  <input
+                    type="text"
+                    name="floating_last_name"
+                    id="floating_last_name"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    required
+                  />
+                  <label
+                    for="floating_last_name"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    >Apellidos</label
+                  >
+                </div>
+              </div>
+              <div class="relative z-0 w-full mb-5 group">
+                <input
+                  type="email"
+                  name="floating_email"
+                  id="floating_email"
+                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
+                  required
+                />
+                <label
+                  for="floating_email"
+                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >Correo Electronico</label
+                >
+              </div>
+              <div class="relative z-0 w-full mb-5 group">
+                <input
+                  type="password"
+                  name="floating_password"
+                  id="floating_password"
+                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
+                  required
+                />
+                <label
+                  for="floating_password"
+                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >Número Celular</label
+                >
+              </div>
+
+              <button
+                type="submit"
+                class="text-gray-900 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >Submit</button
+              >
+            </form>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center items-center">
+          <div class="text-center mt-40 mb-24">
+            <h1 class="text-white text-4xl font-bold md:text-5xl">
+              {title}
+            </h1>
+            <h6 class="text-white italic mb-5">
+              El alimento que ayuda a tu mascota y al planeta.
+            </h6>
+            <p class="text-white text-lg sm:text-xl">
+              {full_description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
