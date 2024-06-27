@@ -6,9 +6,42 @@ interface Props {
   pageHeaderMinVh: string;
 }
 
-const { title, full_description, pageHeaderBgImg, pageHeaderMinVh } =
-  Astro.props as Props;
+const { title, full_description, pageHeaderBgImg, pageHeaderMinVh } = Astro.props as Props;
 ---
+
+<script type="module" >
+  const form = document.querySelector("form");
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Validación de Nombres y Apellidos
+    const firstName = document.getElementById("floating_first_name").value;
+    const lastName = document.getElementById("floating_last_name").value;
+    const nameRegex = /^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/;
+    if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+      alert("Los nombres y apellidos solo deben contener letras.");
+      return false;
+    }
+
+    // Validación de Correo Electrónico
+    const email = document.getElementById("floating_email").value;
+    const emailRegex = /^[^@]+@(hotmail\.com|gmail\.com|yahoo\.com|outlook\.com|live\.com)$/;
+    if (!emailRegex.test(email)) {
+      alert("Ingrese un correo electrónico válido de los dominios permitidos (hotmail, gmail, yahoo, outlook, live).");
+      return false;
+    }
+
+    // Opcional: Validación de Número Celular
+    // const phoneNumber = document.getElementById("floating_password").value;
+    // const phoneRegex = /^\d{10}$/;
+    // if (!phoneRegex.test(phoneNumber)) {
+    //   alert("Ingrese un número de celular válido de 10 dígitos.");
+    //   return false;
+    // }
+
+    alert("Formulario enviado con éxito.");
+  });
+</script>
 
 <section class="mb-8">
   <div
@@ -31,20 +64,20 @@ const { title, full_description, pageHeaderBgImg, pageHeaderMinVh } =
                 planeta. ¡Gracias por unirte a nuestra comunidad!
               </p>
             </div>
-            <form class="max-w-md mx-auto pt-5">
+            <form class="max-w-md mx-auto pt-5 pb-5">
               <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-5 group">
                   <input
                     type="text"
                     name="floating_first_name"
                     id="floating_first_name"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue1 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     for="floating_first_name"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue1 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >Nombres</label
                   >
                 </div>
@@ -53,13 +86,13 @@ const { title, full_description, pageHeaderBgImg, pageHeaderMinVh } =
                     type="text"
                     name="floating_last_name"
                     id="floating_last_name"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue1 peer"
                     placeholder=" "
                     required
                   />
                   <label
                     for="floating_last_name"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue1 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >Apellidos</label
                   >
                 </div>
@@ -69,23 +102,25 @@ const { title, full_description, pageHeaderBgImg, pageHeaderMinVh } =
                   type="email"
                   name="floating_email"
                   id="floating_email"
-                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue1 peer"
                   placeholder=" "
                   required
                 />
                 <label
                   for="floating_email"
-                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue1 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >Correo Electronico</label
                 >
               </div>
               <div class="relative z-0 w-full mb-5 group">
                 <input
-                  type="password"
+                  type="number"
                   name="floating_password"
                   id="floating_password"
-                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue1 peer"
                   placeholder=" "
+                  pattern="\d{10}"
+                  title="Ingrese un número de celular válido de 10 dígitos."
                   required
                 />
                 <label
@@ -94,12 +129,48 @@ const { title, full_description, pageHeaderBgImg, pageHeaderMinVh } =
                   >Número Celular</label
                 >
               </div>
-
-              <button
-                type="submit"
-                class="text-gray-900 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >Submit</button
-              >
+              <p class="text-gray-700 dark:text-gray-400 text-sm px-5 mb-5">
+                Añade los datos de tu mascota para recibir información
+              </p>
+              <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                  <input
+                    type="text"
+                    name="floating_pet_name"
+                    id="floating_pet_name"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    required
+                  />
+                  <label
+                    for="floating_first_name"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    >Nombre de tu mascota</label
+                  >
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                  <input
+                    type="text"
+                    name="floating_breed_name"
+                    id="floating_breed_name"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-gray-900 dark:border-gray-600 dark:focus:border-blue1 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    required
+                  />
+                  <label
+                    for="floating_last_name"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue1 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    >Raza de tu mascota</label
+                  >
+                </div>
+              </div>
+              <div class="flex items-center justify-center pt-5">
+                <button
+                  type="submit"
+                  class="text-white bg-blue1 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >Enviar Datos</button
+                >
+              </div>
             </form>
           </div>
         </div>
