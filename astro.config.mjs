@@ -6,5 +6,6 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://henqchav.github.io',
   base: 'Gelatican',
+  output: 'hybrid', 
   integrations: [tailwind()]
 });
