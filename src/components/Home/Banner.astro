@@ -10,8 +10,9 @@ const { title, full_description, pageHeaderBgImg, pageHeaderMinVh } = Astro.prop
 ---
 
 <script type="module" >
+  import {db,collection,addDoc} from "../../firebaseConfig.ts";
   const form = document.querySelector("form");
-  form.addEventListener("submit", function(event) {
+  form.addEventListener("submit", async function(event) {
     event.preventDefault();
 
     // Validación de Nombres y Apellidos
@@ -31,15 +32,32 @@ const { title, full_description, pageHeaderBgImg, pageHeaderMinVh } = Astro.prop
       return false;
     }
 
-    // Opcional: Validación de Número Celular
-    // const phoneNumber = document.getElementById("floating_password").value;
-    // const phoneRegex = /^\d{10}$/;
-    // if (!phoneRegex.test(phoneNumber)) {
-    //   alert("Ingrese un número de celular válido de 10 dígitos.");
-    //   return false;
-    // }
+    const phoneNumber = document.getElementById("floating_password").value;
+      const phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(phoneNumber)) {
+        alert("Ingrese un número de celular válido de 10 dígitos.");
+        return false;
+      }
 
-    alert("Formulario enviado con éxito.");
+      const petName = document.getElementById("floating_pet_name").value;
+      const breedName = document.getElementById("floating_breed_name").value;
+
+
+      try {
+        await addDoc(collection(db, "user_data"), {
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+          petName,
+          breedName
+        });
+        alert("Formulario enviado con éxito.");
+        form.reset();
+      } catch (e) {
+        console.error("Error al agregar documento: ", e);
+        alert("Hubo un error al enviar el formulario. Inténtalo nuevamente.");
+      }
   });
 </script>
 
