@@ -8,5 +8,5 @@ export default defineConfig({
   base: 'Gelatican',
   output: 'hybrid', 
   integrations: [tailwind()],
-  adapters: [vercel()],
+  adapters: vercel()
 });
