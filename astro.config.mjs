@@ -7,6 +7,6 @@ export default defineConfig({
   site: 'https://henqchav.github.io',
   base: 'Gelatican',
   output: 'server', 
-  integrations: [tailwind()],
+  integrations: [tailwind(), vercel()],
   adapters: vercel()
 });
