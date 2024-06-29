@@ -6,7 +6,7 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   site: 'https://henqchav.github.io',
   base: 'Gelatican',
-  output: 'hybrid', 
+  output: 'server', 
   integrations: [tailwind()],
   adapters: vercel()
 });
