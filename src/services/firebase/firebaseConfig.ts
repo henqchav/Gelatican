@@ -1,9 +1,7 @@
 import { initializeApp, cert } from "firebase-admin/app";
 import {
-  getFirestore,
   collection,
   addDoc,
-  Firestore,
 } from "firebase/firestore";
 
 const app = initializeApp({
