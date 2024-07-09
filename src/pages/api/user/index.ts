@@ -16,7 +16,7 @@ export const POST: APIRoute = async ({request, redirect}) => {
         const userRef = db.collection("users");
         const existingUser = await userRef.where("email", "==", email).get();
         if (!existingUser.empty) {
-            return redirect("/Gelatican?email=false");
+            return redirect("/?email=false");
         }
         await userRef.add({
             name,
@@ -28,7 +28,7 @@ export const POST: APIRoute = async ({request, redirect}) => {
         });
     } catch (error) {
         console.error(error);
-        return redirect("/Gelatican?success=false");
+        return redirect("/?success=false");
     }
-    return redirect("/Gelatican?success=true");
+    return redirect("/?success=true");
 };
