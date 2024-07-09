@@ -4,20 +4,20 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+// Check if FIREBASE_PRIVATE_KEY is defined and replace \n with actual new lines
+const privateKey = (import.meta as any).env.FIREBASE_PRIVATE_KEY
+  ? (import.meta as any).env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n")
+  : undefined;
+
+if (!privateKey) {
+  throw new Error("FIREBASE_PRIVATE_KEY is not defined in environment variables.");
+}
+
 const app = initializeApp({
   credential: cert({
     clientEmail: (import.meta as any).env.FIREBASE_CLIENT_EMAIL,
-    privateKey: (import.meta as any).env.FIREBASE_PRIVATE_KEY.replace(
-      /\\n/g,
-      "\n"
-    ),
-    //apiKey: (import.meta as any).env.FIREBASE_API_KEY,
-    //authDomain: (import.meta as any).env.FIREBASE_AUTH_DOMAIN,
+    privateKey: privateKey,
     projectId: (import.meta as any).env.FIREBASE_PROJECT_ID,
-    //storageBucket: (import.meta as any).env.FIREBASE_STORAGE_BUCKET,
-    //messaginSenderId: (import.meta as any).env.FIREBASE_MESSAGING_SENDER_ID,
-    //appId: (import.meta as any).env.FIREBASE_APP_ID,
-    //measurementId: (import.meta as any).env.FIREBASE_MEASUREMENT_ID,
   }),
 });
 
