@@ -8,6 +8,6 @@ export default defineConfig({
   site: 'https://henqchav.github.io',
   base: '/',
   output: 'hybrid', 
-  integrations: [tailwind(), versel()],
-  adapters: versel()
+  integrations: [tailwind(), vercel()],
+  adapters: vercel()
 });
